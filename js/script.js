@@ -7,19 +7,18 @@ function getSurat() {
       const dataSurat = response.data;
       dataSurat.forEach((surat) => {
         cardSurat += `
-        <div class="col-lg-3 col-md-4 col-sm-6">
-             <div class="card  mb-4 card-surat" style="height: 80%;">
-                <div class="card-body" onclick="location.href='surat.html?nomorsurat=${surat.nomor}'">
-                  <h5 class="card-title">${surat.nomor}. ${surat.namaLatin}</h5>
-                  <h3 class="card-subtitle text-end mb-3 mt-3 text-body-secondary">${surat.nama}</h3>
-                  <p class="card-text text-end">${surat.arti}</p>
+        <div class="col-lg-3 col-md-4 col-6 ">
+             <div class="card card-surat text-white" style="height: 80%;">
+             <div class="card-body position-relative " onclick="location.href='surat.html?nomorsurat=${surat.nomor}'">
+             <div class="no-surat">
+             <div class="mt-1 fw-semibold fs-6">${surat.nomor} </div>
+             </div>
+                  <h5 class="card-title card-titles">${surat.namaLatin}</h5>
+                  <p class="card-text opacity-50 mb-3">${surat.arti}</p>
                 </div>
               </div>
         </div>`;
       });
-
-
-
       const listSurat = document.querySelector(".list-surat");
       listSurat.innerHTML = cardSurat;
     })
