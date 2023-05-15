@@ -51,12 +51,14 @@ body {
     color: #00957B !important;
 }
 
-.card-text {
+.arti-surat {
   margin-left: 45px;
+  font-size: 15px;
 }
 
 .card-titles {
     margin-left: 45px;
+    font-size: 19px;
 }
 
 .card-list-surat{

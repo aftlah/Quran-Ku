@@ -14,7 +14,7 @@ function getSurat() {
              <div class="mt-1 fw-semibold fs-6">${surat.nomor} </div>
              </div>
                   <h5 class="card-title card-titles">${surat.namaLatin}</h5>
-                  <p class="card-text opacity-50 mb-3">${surat.arti}</p>
+                  <p class="card-text opacity-50 mb-3 arti-surat">${surat.arti}</p>
                 </div>
               </div>
         </div>`;
