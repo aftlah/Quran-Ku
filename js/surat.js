@@ -16,19 +16,19 @@ function getURL(e) {
 const nomorsurat = getURL("nomorsurat");
 // console.log(nomorsurat)
 
-const loader = document.querySelector(".hidden-loader");
+const loader = document.querySelector(".loader");
 const error = "MAAF SERVER SEDANG BERMASALAH, TRIMAKASIH";
 
 async function getSurat() {
   try {
-    loader.classList.remove("hidden-loader");
-    await getUiDetail();
+    loader.classList.add("hidden-loader");
+    await getUiDetail(nomorsurat);
   } catch (err) {
     alert(error);
-    loader.classList.add("hidden-loader");
+    loader.classList.remove("hidden-loader");
   }
 
-  function getUiDetail() {
+  function getUiDetail(nomorsurat) {
     return fetch("https://equran.id/api/surat/" + nomorsurat)
       .then((response) => response.json())
       .then((response) => {

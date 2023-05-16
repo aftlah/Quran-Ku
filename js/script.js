@@ -1,14 +1,14 @@
 const listSurat = document.querySelector(".list-surat");
-const loader = document.querySelector('.hidden-loader')
+const loader = document.querySelector('.loader')
 const error = 'MAAF SERVER SEDANG BERMASALAH, TRIMAKASIH'
 
 async function getSurat() {
   try {
     await getUI();
-    loader.classList.remove('hidden-loader')
+    loader.classList.add('hidden-loader')
   } catch (err) {
     alert(error)
-    loader.classList.add('hidden-loader')
+    loader.classList.remove('hidden-loader')
   }
 }
 
