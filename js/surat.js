@@ -22,13 +22,13 @@ const error = "MAAF SERVER SEDANG BERMASALAH, TRIMAKASIH";
 async function getSurat() {
   try {
     loader.classList.add("hidden-loader");
-    await getUiDetail(nomorsurat);
+    await getUiDetail();
   } catch (err) {
     alert(error);
     loader.classList.remove("hidden-loader");
   }
 
-  function getUiDetail(nomorsurat) {
+  function getUiDetail() {
     return fetch("https://equran.id/api/surat/" + nomorsurat)
       .then((response) => response.json())
       .then((response) => {
