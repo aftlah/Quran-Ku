@@ -7,7 +7,8 @@ async function getSurat() {
     await getUI();
     loader.classList.add('hidden-loader')
   } catch (err) {
-    alert(error)
+    console.log(err)
+    // alert(error)
     loader.classList.remove('hidden-loader')
   }
 }
@@ -25,7 +26,7 @@ function getUI() {
       
       listSurat.innerHTML = cardSurat;
     })
-    // .catch((err) => console.log(err));
+    .catch((err) => console.log(err));
 }
 
 getSurat();

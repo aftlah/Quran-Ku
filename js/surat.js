@@ -24,7 +24,8 @@ async function getSurat() {
     loader.classList.add("hidden-loader");
     await getUiDetail();
   } catch (err) {
-    alert(error);
+    console.log(err)
+    // alert(error);
     loader.classList.remove("hidden-loader");
   }
 
