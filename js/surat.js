@@ -14,20 +14,77 @@ function getURL(e) {
 }
 
 const nomorsurat = getURL("nomorsurat");
-console.log(nomorsurat)
+// console.log(nomorsurat)
 
+const loader = document.querySelector(".hidden-loader");
+const error = "MAAF SERVER SEDANG BERMASALAH, TRIMAKASIH";
 
-function getSurat() {
-  fetch("https://equran.id/api/surat/" + nomorsurat)
-    .then((response) => response.json())
-    .then((response) => {
-      const data = response;
+async function getSurat() {
+  try {
+    loader.classList.remove("hidden-loader");
+    await getUiDetail();
+  } catch (err) {
+    alert(error);
+    loader.classList.add("hidden-loader");
+  }
 
-      // Title Surat
-      // const titleSurat = document.getElementById('title-surat')
+  function getUiDetail() {
+    return fetch("https://equran.id/api/surat/" + nomorsurat)
+      .then((response) => response.json())
+      .then((response) => {
+        const data = response;
 
-      // Judul Surat
-      const cardNamaSurat = `
+        // Judul Surat
+        let cardNamaSurat = judulSurat(data);
+
+        const namaSurat = document.querySelector(".nama-surat");
+        namaSurat.innerHTML = cardNamaSurat;
+
+        // Isi Surat
+        const surat = data.ayat;
+        let isiSurat = "";
+        surat.forEach((s) => {
+          isiSurat += `
+          <div class="card my-4 bg-isi-surat text-white">
+          <div class="card-body">
+            <p class ="nomor-ayat fw-semibold fs-5">${s.nomor}.</p>
+            <h3 class="text-end lh-lg">${s.ar}</h3>
+            <p class="mt-3 teks-latin">${s.tr}</p>
+            <p>${s.idn}</p>
+          </div>
+          </div>
+      `;;
+        });
+
+        const cardIsiSurat = document.querySelector(".isi-surat");
+        cardIsiSurat.innerHTML = isiSurat;
+
+        // Play n Pause Audio
+        const buttonPlay = document.querySelector(".audio-btn-play");
+        const buttonpause = document.querySelector(".audio-btn-pause");
+        const audioSurat = document.querySelector("#audio-tag");
+
+        // Play
+        buttonPlay.addEventListener("click", function () {
+          buttonPlay.classList.add("hidden-btn");
+          buttonpause.classList.remove("hidden-btn");
+          audioSurat.play();
+        });
+
+        // Pause
+        buttonpause.addEventListener("click", function () {
+          buttonPlay.classList.remove("hidden-btn");
+          buttonpause.classList.add("hidden-btn");
+          audioSurat.pause();
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+}
+getSurat();
+
+function judulSurat(data) {
+  return `
       <strong> ${data.nama_latin} - ${data.nama} </strong>
       <p>Jumlah Ayat: ${data.jumlah_ayat} (${data.arti})</p>
 
@@ -48,57 +105,4 @@ function getSurat() {
       </button>
 
       <audio src="${data.audio}" id="audio-tag"></audio>`;
-   
-
-
-      const namaSurat = document.querySelector(".nama-surat");
-      namaSurat.innerHTML = cardNamaSurat;
-
-      // Isi Surat
-      const surat = data.ayat;
-      console.log(surat.nomorAyat);
-      let isiSurat = "";
-      surat.forEach((s) => {
-        isiSurat += `
-        <div class="card my-4 bg-isi-surat text-white">
-        <div class="card-body">
-          <p class ="nomor-ayat fw-semibold fs-5">${s.nomor}.</p>
-          <h3 class="text-end lh-lg">${s.ar}</h3>
-          <p class="mt-3 teks-latin">${s.tr}</p>
-          <p>${s.idn}</p>
-        </div>
-      </div>
-    `;
-      });
-
-      const cardIsiSurat = document.querySelector(".isi-surat");
-      cardIsiSurat.innerHTML = isiSurat;
-
-
- 
-      // Play n Pause Audio
-      const buttonPlay = document.querySelector('.audio-btn-play')
-      const buttonpause = document.querySelector('.audio-btn-pause')
-      const audioSurat = document.querySelector('#audio-tag')
-
-
-      // Play 
-      buttonPlay.addEventListener('click', function(){
-        buttonPlay.classList.add('hidden-btn')
-        buttonpause.classList.remove('hidden-btn')
-        audioSurat.play()
-        
-    })
-
-    // Pause
-    buttonpause.addEventListener('click', function(){
-      buttonPlay.classList.remove('hidden-btn')
-      buttonpause.classList.add('hidden-btn')
-      audioSurat.pause()
-    })
-      
-
-    })
-    .catch((err) => console.log(err));
 }
-getSurat();

@@ -13,42 +13,41 @@ body {
   background-color: #334155 !important;
 }
 
-.nav-heading{
-    background: transparent;
-    backdrop-filter: blur(10px);
-    /* background-color: white; */
-    margin-top: 10px;
-    /* margin-left: 20px; */
-    /* position: fixed; */
-    /* z-index: 99; */
+.nav-heading {
+  background: transparent;
+  backdrop-filter: blur(10px);
+  /* background-color: white; */
+  margin-top: 10px;
+  /* margin-left: 20px; */
+  /* position: fixed; */
+  /* z-index: 99; */
 }
 
-.nav-head{
-   color:#00957B !important;
-   font-size: 30px !important;
-   font-weight: bold;
-   font-style: italic;
-
+.nav-head {
+  color: #00957b !important;
+  font-size: 30px !important;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .card-surat:hover {
-    background-color: #caded1;
+  background-color: #caded1;
 }
 
-.bg-isi-surat{
-    background-color: #334155 !important;
+.bg-isi-surat {
+  background-color: #334155 !important;
 }
 
-.bg-surat{
-    background-color: #334155;
+.bg-surat {
+  background-color: #334155;
 }
 
-.nomor-ayat{
-    color: #00957B !important;
+.nomor-ayat {
+  color: #00957b !important;
 }
 
-.teks-latin{
-    color: #00957B !important;
+.teks-latin {
+  color: #00957b !important;
 }
 
 .arti-surat {
@@ -57,25 +56,78 @@ body {
 }
 
 .card-titles {
-    margin-left: 45px;
-    font-size: 19px;
+  margin-left: 45px;
+  font-size: 19px;
 }
 
-.card-list-surat{
-    margin-top: 20px;
+.card-list-surat {
+  margin-top: 20px;
 }
 
 .no-surat {
-    top: 20px;
-    text-align: center;
-    position: absolute;
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: 50%;
-    background-color: #00957b;
-    text-align: center;
+  top: 20px;
+  text-align: center;
+  position: absolute;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50%;
+  background-color: #00957b;
+  text-align: center;
+}
+
+.no-surat .surat-nomor {
+  position: relative;
+  text-align: center;
+  margin: 2px 0 !important;
 }
 
 .hidden-btn {
   display: none;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+}
+
+.loader-surat {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  margin: 0 50%;
+}
+
+.hidden-loader{
+  display: none;
+}
+
+@media (max-width: 450px) {
+  .arti-surat {
+    margin-left: 25px;
+    font-size: 9px;
+  }
+
+  .card-titles {
+    margin-left: 25px;
+    font-size: 13px;
+  }
+  .no-surat {
+    top: 15px;
+    width: 21px !important;
+    height: 21px !important;
+    left: 10px;
+  }
+  .no-surat .surat-nomor {
+    position: relative;
+    text-align: center;
+    margin: 1px 0 !important;
+    font-size: 11px !important;
+  }
 }
