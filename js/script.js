@@ -8,7 +8,7 @@ async function getSurat() {
     loader.classList.add('hidden-loader')
   } catch (err) {
     console.log(err)
-    // alert(error)
+    alert(error)
     loader.classList.remove('hidden-loader')
   }
 }
