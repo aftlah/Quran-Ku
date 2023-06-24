@@ -1,9 +1,11 @@
 # Quran-Ku
 
-# Tech :
-  HTML
-  CSS
-  JS
+**Tech**
+```
+- HTML
+- CSS
+- JS
+```
 
-- Demo -
-- https://aftlah.github.io/Quran-Ku/
+**Link Demo** 
+[Quran-Ku](https://aftlah.github.io/Quran-Ku/)
